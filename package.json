@@ -1,6 +1,6 @@
 {
   "name": "simdb",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple key value wrapper for IndexedDB",
   "main": "index.js",
   "engines": {
