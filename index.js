@@ -64,6 +64,7 @@ class SimDB {
   set (key, value) {
     return this.ready.then(() => {
       return new Promise((resolve, reject) => {
+        if (typeof key !== 'string' && typeof key !== 'number') return reject(new Error(`simdb#set key must be a string or a number.`))
         const request = this.store.put(value, key)
         request.onsuccess = resolve
         request.onerror = createErrorHandler('set', this._options, reject)

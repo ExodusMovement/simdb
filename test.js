@@ -1,4 +1,5 @@
 const assert = require('assert')
+const aw = require('aw')
 const SimDB = require('./')
 
 /* global afterEach, beforeEach, it, describe */
@@ -28,6 +29,16 @@ describe('simdb', () => {
     assert.strictEqual(val, 'somevalue')
   })
 
+  ita('should update key and value', async () => {
+    await simdb.set('somekey', 'somevalue')
+    const val = await simdb.get('somekey')
+    assert.strictEqual(val, 'somevalue')
+
+    await simdb.set('somekey', 'somevalueAGAIN')
+    const val2 = await simdb.get('somekey')
+    assert.strictEqual(val2, 'somevalueAGAIN')
+  })
+
   ita('should return undefined if key does not exist', async () => {
     const val = await simdb.get('key-does-not-exist')
     assert(typeof val === 'undefined')
@@ -53,4 +64,16 @@ describe('simdb', () => {
     console.dir(val)
   })
   */
+
+  ita('does not store dates as keys', async () => {
+    const d = new Date()
+    const [err] = await aw(simdb.set.bind(simdb))(d, 'hi')
+    assert(err)
+  })
+
+  ita('does not store objects as keys', async () => {
+    const d = { name: 'jp' }
+    const [err] = await aw(simdb.set.bind(simdb))(d, 'hi')
+    assert(err)
+  })
 })

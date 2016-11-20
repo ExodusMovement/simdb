@@ -30,6 +30,7 @@
     "index.js"
   ],
   "devDependencies": {
+    "aw": "^0.1.0",
     "babel-preset-stage-3": "^6.17.0",
     "babel-register": "^6.18.0",
     "electron": "^1.4.7",
