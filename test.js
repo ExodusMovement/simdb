@@ -36,4 +36,21 @@ describe('simdb', () => {
   ita('should not return an error if the key doesnt exist on delete', async () => {
     await simdb.delete('key-really-does-not-exist')
   })
+
+  ita('should store integers as keys', async () => {
+    await simdb.set(4, 'the num 4')
+    const val = await simdb.get(4)
+    assert.strictEqual(val, 'the num 4')
+  })
+
+  /*
+  // not yet
+  ita('should be able to store Buffer', async () => {
+    var buf = Buffer.from('hello world!', 'utf8')
+    await simdb.set('somebuf', buf)
+    const val = await simdb.get('somebuf')
+    console.log(Buffer.isBuffer(val))
+    console.dir(val)
+  })
+  */
 })
