@@ -23,11 +23,7 @@ class SimDB {
       }
 
       request.onerror = createErrorHandler('open', opts, reject)
-
-      request.onclose = () => console.log('db closed')
     })
-
-    // TODO: consider handling onclose event
   }
 
   delete (key) {
