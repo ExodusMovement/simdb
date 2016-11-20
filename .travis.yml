@@ -1,0 +1,13 @@
+sudo: false
+language: node_js
+node_js:
+  - "6"
+matrix:
+  include:
+    - node_js: "6"
+      env: TEST_SUITE=lint
+env:
+  - TEST_SUITE=unit
+script: npm run-script $TEST_SUITE
+before_script:
+  - export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start

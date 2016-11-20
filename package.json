@@ -1,0 +1,39 @@
+{
+  "name": "simdb",
+  "version": "0.0.0",
+  "description": "Simple key value wrapper for IndexedDB",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "npm run lint && npm run unit",
+    "unit": "electron-mocha --renderer -r babel-register test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exodusmovement/simdb.git"
+  },
+  "keywords": [
+    "indexeddb",
+    "simple",
+    "db"
+  ],
+  "author": "Exodus Movement, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/exodusmovement/simdb/issues"
+  },
+  "homepage": "https://github.com/exodusmovement/simdb#readme",
+  "files": [
+    "index.js"
+  ],
+  "devDependencies": {
+    "babel-preset-stage-3": "^6.17.0",
+    "babel-register": "^6.18.0",
+    "electron": "^1.4.7",
+    "electron-mocha": "^3.2.0",
+    "standard": "^8.5.0"
+  }
+}
