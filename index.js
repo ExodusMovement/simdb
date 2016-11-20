@@ -8,8 +8,9 @@ class SimDB {
     this._options = opts
     this._store = null
 
+    const version = 1 // consider doing something with this
     this.ready = new Promise((resolve, reject) => {
-      let request = window.indexedDB.open(opts.dbName)
+      let request = window.indexedDB.open(opts.dbName, version)
 
       request.onupgradeneeded = (event) => {
         this._db = event.target.result
