@@ -5,7 +5,7 @@ const SimDB = require('./')
 /* global afterEach, beforeEach, it, describe */
 // trinity: mocha
 
-function ita (desc, testFn) {
+const ita = (desc, testFn) => {
   it(desc, (done) => {
     testFn().then(done).catch(done)
   })

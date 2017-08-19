@@ -73,22 +73,20 @@ class SimDB {
       .transaction([this._options.storeName], 'readwrite') // consider using nonstandard 'readwriteflush'
       .objectStore(this._options.storeName)
   }
-}
 
-SimDB.create = function createSimDB (opts) {
-  return new SimDB(opts)
-}
-
-function createErrorHandler (method, opts, reject) {
-  return function SimDBErrorHandler (event) {
-    const msg = `SimDB ${method} error for db ${opts.dbName} and store ${opts.storeName}. Error code: ${event.target.errorCode}.`
-    const err = new Error(msg)
-    console.error(msg)
-    reject(err)
+  static create (opts) {
+    return new SimDB(opts)
   }
 }
 
-module.exports = (function () {
+const createErrorHandler = (method, opts, reject) => (event) => {
+  const msg = `SimDB ${method} error for db ${opts.dbName} and store ${opts.storeName}. Error code: ${event.target.errorCode}.`
+  const err = new Error(msg)
+  console.error(msg)
+  reject(err)
+}
+
+module.exports = (() => {
   const defaultSimDB = SimDB.create()
   defaultSimDB.create = SimDB.create
   return defaultSimDB
