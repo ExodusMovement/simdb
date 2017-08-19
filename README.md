@@ -13,12 +13,28 @@ Install
 
     npm i --save simdb
 
-
 Usage
 -----
 
-(TODO)
+```JavaScript
+const SimDB = require('simdb')
+const simdb = SimDB.create()
 
+// Using await-style
+await simdb.set('key', 'value')
+await simdb.get('key') // -> 'value'
+await simdb.delete('key')
+
+// Using promise-style
+simdb.get('key').then((value) => {
+  /* ... */
+}).catch((err) => {
+  /* ... */
+})
+
+// Delete database
+simdb.deleteDB()
+```
 
 Credit
 ------
